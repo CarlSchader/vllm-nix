@@ -309,10 +309,16 @@ in {
         }
         // cfg.environment;
 
-      path = lib.optionals cfg.cudaToolkit.enable [
-        pkgs.gcc
-        cfg.cudaToolkit.package
-      ];
+      path =
+        [
+          # The venv itself: FlashInfer's JIT invokes `ninja` (shipped in the
+          # venv's bin/) via subprocess and expects it on PATH.
+          cfg.package
+        ]
+        ++ lib.optionals cfg.cudaToolkit.enable [
+          pkgs.gcc
+          cfg.cudaToolkit.package
+        ];
 
       serviceConfig = {
         ExecStart = "${cfg.package}/bin/vllm ${lib.escapeShellArgs serveArgs}";
