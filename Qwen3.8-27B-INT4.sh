@@ -9,7 +9,7 @@ uv run vllm serve RedHatAI/Qwen3.8-27B-INT4 \
   --max-num-seqs 8 \
   --max-model-len "$CONTEXT_SIZE" \
   --max-num-batched-tokens 2048 \
-  --gpu-memory-utilization 0.95 \
+  --gpu-memory-utilization 0.90 \
   --tensor-parallel-size 1 \
   --enable-auto-tool-choice \
   --tool-call-parser qwen3_coder \

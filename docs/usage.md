@@ -89,7 +89,7 @@ services.vllm = {
 | `model.maxModelLen` | `32768` | Context window. |
 | `maxNumSeqs` | `8` | `--max-num-seqs`. |
 | `maxNumBatchedTokens` | `2048` | `--max-num-batched-tokens`. |
-| `gpuMemoryUtilization` | `"0.95"` | `--gpu-memory-utilization`. |
+| `gpuMemoryUtilization` | `"0.90"` | `--gpu-memory-utilization`. Keep at or below `0.90` on unified-memory GPUs (e.g. DGX Spark): the desktop/driver hold several GiB at startup, so `0.95 * total` exceeds the free memory vLLM measures and startup fails. |
 | `tensorParallelSize` | `1` | `--tensor-parallel-size`. |
 | `kvCacheDtype` | `null` | e.g. `"fp8"`. |
 | `attentionBackend` | `null` | e.g. `"TRITON_ATTN"`. |

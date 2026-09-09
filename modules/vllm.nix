@@ -120,7 +120,11 @@ in {
 
     gpuMemoryUtilization = lib.mkOption {
       type = lib.types.str;
-      default = "0.95";
+      # 0.95 fails on unified-memory hosts (e.g. DGX Spark/GB10): the desktop
+      # and driver already hold several GiB at startup, so 0.95 * total is
+      # above the free memory vLLM measures. 0.90 is vLLM's own default and
+      # leaves headroom for that.
+      default = "0.90";
       description = "`--gpu-memory-utilization` (string to avoid float formatting surprises).";
     };
 
