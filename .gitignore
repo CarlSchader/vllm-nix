@@ -1,2 +1,5 @@
 result
 .webui_secret_key
+.venv*/
+__pycache__/
+experiments/

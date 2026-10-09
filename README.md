@@ -1,5 +1,13 @@
 # vllm-nix
 
+## DGX Spark experiment handoff
+
+See **[HANDOFF.md](HANDOFF.md)** before continuing the Qwen/SGLang → vLLM
+experiment on the Spark. It records exact model precision, remote state,
+completed checks, access blockers, and the remaining tuning plan.
+[Experiment runbook](docs/spark-experiments.md). No vLLM speedup is claimed yet.
+
+
 A pinned [vLLM](https://github.com/vllm-project/vllm) 0.28.0 environment
 (uv.lock → Nix via [uv2nix](https://github.com/pyproject-nix/uv2nix), prebuilt
 wheels only) plus a NixOS module that runs it as a hardened, auto-restarting
